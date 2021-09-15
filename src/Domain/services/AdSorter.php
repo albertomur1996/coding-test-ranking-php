@@ -1,5 +1,7 @@
 <?php
 
+namespace  App\Domain\services;
+
 class AdSorter
 {
     public function execute(array $ads) {

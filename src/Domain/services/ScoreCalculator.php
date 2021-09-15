@@ -1,10 +1,12 @@
 <?php
 
+namespace  App\Domain\services;
+
 use \App\Domain\entities\QualityAd;
 
 class ScoreCalculator
 {
-    public function execute(array $ads) : void {
+    public function execute(array $ads) : array {
         $result = [];
 
         foreach ($ads as $ad) {
@@ -74,6 +76,10 @@ class ScoreCalculator
 
                 if ($is_complete) $ad->score += 40;
             }
+
+            if ($ad->getScore() >= 0) array_push($result, $ad);
         }
+
+        return $result;
     }
 }

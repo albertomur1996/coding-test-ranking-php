@@ -1,5 +1,7 @@
 <?php
 
+namespace  App\Domain\services;
+
 use App\Domain\entities\QualityAd;
 
 class PublicAdFilter
