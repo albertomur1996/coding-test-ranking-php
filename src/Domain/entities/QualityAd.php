@@ -13,13 +13,13 @@ final class QualityAd extends BaseAd
         $id,
         $typology,
         $description,
-        $pictureUrls,
+        $pictures,
         $houseSize,
         $gardenSize = null,
         public ?int $score = null,
         private ?DateTimeImmutable $irrelevantSince = null,
     ) {
-        parent::__construct($id, $typology, $description, $pictureUrls, $houseSize, $gardenSize);
+        parent::__construct($id, $typology, $description, $pictures, $houseSize, $gardenSize);
     }
 
     /**

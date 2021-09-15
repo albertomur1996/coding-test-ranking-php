@@ -1,0 +1,17 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+quality:
+  path: /list/quality
+  controller: App\Infrastructure\Api\QualityListingController
+  methods: GET
+
+customer:
+  path: /list/customer
+  controller: App\Infrastructure\Api\PublicListingController
+  methods: GET
+
+score:
+  path: /score/calculate
+  controller: App\Infrastructure\Api\CalculateScoreController
+  methods: GET
