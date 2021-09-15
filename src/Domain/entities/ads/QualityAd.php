@@ -7,19 +7,17 @@ namespace App\Domain\entities;
 
 use DateTimeImmutable;
 
-final class QualityAd extends BaseAd
+class QualityAd extends BaseAd
 {
     public function __construct(
         $id,
-        $typology,
-        $description,
         $pictures,
-        $houseSize,
-        $gardenSize = null,
+        $description,
+        $property_size,
         public ?int $score = null,
         private ?DateTimeImmutable $irrelevantSince = null,
     ) {
-        parent::__construct($id, $typology, $description, $pictures, $houseSize, $gardenSize);
+        parent::__construct($id, $pictures, $description, $property_size);
     }
 
     /**

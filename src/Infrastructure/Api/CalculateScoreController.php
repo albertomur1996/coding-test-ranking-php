@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Api;
 
-use CalculateScoreUseCase;
+use App\application\usecase\CalculateScoreUseCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 final class CalculateScoreController

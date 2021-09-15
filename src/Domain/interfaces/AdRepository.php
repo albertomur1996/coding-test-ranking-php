@@ -1,5 +1,7 @@
 <?php
 
+//namespace App\Domain\interfaces;
+
 use \App\Domain\entities\QualityAd;
 
 interface AdRepository {

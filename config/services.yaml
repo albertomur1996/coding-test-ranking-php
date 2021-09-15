@@ -23,9 +23,38 @@ services:
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller/'
+    App\Infrastructure\Api\:
+        resource: '../src/Infrastructure/Api/'
         tags: ['controller.service_arguments']
+
+    App\Domain\services\:
+        resource: '../src/Domain/services/'
+        tags: [ 'controller.service_arguments' ]
+
+    App\application\usecase\:
+        resource: '../src/application/usecase/'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Infrastructure\Persistence\:
+        resource: '../src/Infrastructure/Persistence/'
+        tags: [ 'controller.service_arguments' ]
+
+    AdRepository: '@App\Infrastructure\Persistence\InFileSystemAdRepository'
+
+
+
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+#    App\application\usecase\CalculateScoreUseCase:
+#        autowire: true
+#
+#    App\application\usecase\ShowPropertiesToBusinessUseCase:
+#        autowire: true
+#
+#    App\application\usecase\ShowPropertiesToCustomerUseCase:
+#        autowire: true
+#
+#    App\Domain\services\AdLoader:
+#        autowire: true

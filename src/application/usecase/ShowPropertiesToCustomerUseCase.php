@@ -1,11 +1,13 @@
 <?php
 
+namespace App\application\usecase;
+
 use App\Domain\services\AdLoader;
 use App\Domain\services\PublicAdFilter;
 use App\Domain\services\AdSorter;
 use App\Domain\services\AdTransformer;
 
-class ShowPropertiesToClientsUseCase
+class ShowPropertiesToCustomerUseCase
 {
     public function __construct(
         private AdLoader $ad_loader,
@@ -19,6 +21,7 @@ class ShowPropertiesToClientsUseCase
     public function execute() : array {
         $ads = $this->ad_loader->execute();
         $ads = $this->public_ad_filter->execute($ads);
+//        print_r($ads);
         $ads = $this->ad_sorter->execute($ads);
         return $this->ad_transformer->execute($ads);
     }

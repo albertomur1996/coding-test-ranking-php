@@ -10,7 +10,7 @@ class ScoreCalculator
         $result = [];
 
         foreach ($ads as $ad) {
-            /* @var $ad QualityAd */
+//            /* @var $ad QualityAd */
 
             //pictures
             if (sizeof($ad->getPictures()) == 0) {
@@ -32,10 +32,10 @@ class ScoreCalculator
 
             //description word count
             $wc = str_word_count($ad->getDescription());
-            if (strcmp($ad->getTypology(), "FLAT")) {
+            if (is_a($ad, "QualityFlat")) {
                 if ($wc >= 20 && $wc <= 49) $ad->score += 10;
                 else if ($wc >= 50) $ad->score += 30;
-            } elseif (strcmp($ad->getTypology(), "CHALET")) {
+            } elseif (is_a($ad, "QualityChalet")) {
                 if ($wc > 50) $ad->score += 20;
             }
 
@@ -56,26 +56,19 @@ class ScoreCalculator
                 $ad->score += 5;
             }
 
+            //check if ad is complete
             $is_complete = true;
 
-            if (sizeof($ad->getPictures()) < 1) {
+            if (sizeof($ad->getPictures()) == 0 || $wc <= 0) {
                 $is_complete = false;
             }
-
-            if ($is_complete) {
-                if ($ad->getTypology() == "FLAT") {
-                    if ($ad->getHouseSize() == 0 || $wc <= 0) $is_complete = false;
-                } else if ($ad->getTypology() == "CHALET") {
-                    if ($wc <= 0 ||
-                        $ad->getHouseSize() == 0 ||
-                        $ad->getGardenSize() == null ||
-                        ($ad->getGardenSize() != null && $ad->getGardenSize() <= 0)) $is_complete = false;
-                } else if ($ad->getTypology() == "GARAGE") {
-                    if ($ad->getHouseSize() == 0) $is_complete = false;
-                }
-
-                if ($is_complete) $ad->score += 40;
+            if (is_a($ad, "QualityFlat") && $wc <= 0) {
+                $is_complete = false;
             }
+            if (is_a($ad, "QualityChalet") && ($wc <= 0 || $ad->getGardenSize() <= 0)) {
+                $is_complete = false;
+            }
+            if ($is_complete) $ad->score += 40;
 
             if ($ad->getScore() >= 0) array_push($result, $ad);
         }

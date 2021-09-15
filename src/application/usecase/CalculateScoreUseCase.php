@@ -1,5 +1,7 @@
 <?php
 
+namespace App\application\usecase;
+
 use App\Domain\services\AdLoader;
 use App\Domain\services\ScoreCalculator;
 use App\Domain\services\AdSaver;
