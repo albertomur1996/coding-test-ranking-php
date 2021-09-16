@@ -16,4 +16,8 @@ final class QualityGarage extends QualityAd
     ) {
         parent::__construct($id, $pictures, $description, $property_size, $score, $irrelevantSince);
     }
+
+    public function __toString(){
+        return json_encode($this);
+    }
 }

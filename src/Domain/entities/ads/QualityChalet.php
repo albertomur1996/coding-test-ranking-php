@@ -26,11 +26,17 @@ final class QualityChalet extends QualityAd
         return $this->gardenSize;
     }
 
+    /**
+     * @param int|null $gardenSize
+     */
+    public function setGardenSize(?int $gardenSize): void
+    {
+        $this->gardenSize = $gardenSize;
+    }
+
+
+
     public function __toString(){
-        $output = '';
-
-
-
-        return $output;
+        return json_encode($this);
     }
 }

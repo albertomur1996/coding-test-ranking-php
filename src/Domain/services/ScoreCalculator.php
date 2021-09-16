@@ -2,7 +2,7 @@
 
 namespace  App\Domain\services;
 
-use \App\Domain\entities\QualityAd;
+use DateTimeZone;
 
 class ScoreCalculator
 {
@@ -10,7 +10,7 @@ class ScoreCalculator
         $result = [];
 
         foreach ($ads as $ad) {
-//            /* @var $ad QualityAd */
+            $ad->score = 0;
 
             //pictures
             if (sizeof($ad->getPictures()) == 0) {
@@ -26,12 +26,12 @@ class ScoreCalculator
             }
 
             //has description
-            if (strlen($ad->getDescription()) > 0) {
+            $wc = str_word_count($ad->getDescription());
+            if ($wc > 0) {
                 $ad->score += 5;
             }
 
             //description word count
-            $wc = str_word_count($ad->getDescription());
             if (is_a($ad, "QualityFlat")) {
                 if ($wc >= 20 && $wc <= 49) $ad->score += 10;
                 else if ($wc >= 50) $ad->score += 30;
@@ -40,19 +40,19 @@ class ScoreCalculator
             }
 
             //check if description contains keywords
-            if (str_contains(strtolower($ad->getDescription()), "luminoso")) {
+            if (str_contains(mb_strtolower($ad->getDescription()), "luminoso")) {
                 $ad->score += 5;
             }
-            if (str_contains(strtolower($ad->getDescription()), "nuevo")) {
+            if (str_contains(mb_strtolower($ad->getDescription()), "nuevo")) {
                 $ad->score += 5;
             }
-            if (str_contains(strtolower($ad->getDescription()), "céntrico")) {
+            if (str_contains(mb_strtolower($ad->getDescription()), "céntrico")) {
                 $ad->score += 5;
             }
-            if (str_contains(strtolower($ad->getDescription()), "reformado")) {
+            if (str_contains(mb_strtolower($ad->getDescription()), "reformado")) {
                 $ad->score += 5;
             }
-            if (str_contains(strtolower($ad->getDescription()), "ático")) {
+            if (str_contains(mb_strtolower($ad->getDescription()), "ático")) {
                 $ad->score += 5;
             }
 
@@ -68,9 +68,18 @@ class ScoreCalculator
             if (is_a($ad, "QualityChalet") && ($wc <= 0 || $ad->getGardenSize() <= 0)) {
                 $is_complete = false;
             }
-            if ($is_complete) $ad->score += 40;
+            if ($is_complete) {
+                $ad->score += 40;
+            } else {
+                date_default_timezone_set('Europe/Madrid');
+                $date = date_create_immutable();
+                $ad->setIrrelevantSince($date);
+            }
 
-            if ($ad->getScore() >= 0) array_push($result, $ad);
+            if ($ad->getScore() < 0) $ad->score = 0;
+            if ($ad->getScore() > 100) $ad->score = 100;
+
+            array_push($result, $ad);
         }
 
         return $result;

@@ -5,7 +5,7 @@ namespace App\application\usecase;
 use App\Domain\services\AdLoader;
 use App\Domain\services\PublicAdFilter;
 use App\Domain\services\AdSorter;
-use App\Domain\services\AdTransformer;
+use App\Domain\services\CustomerAdTransformer;
 
 class ShowPropertiesToCustomerUseCase
 {
@@ -13,7 +13,7 @@ class ShowPropertiesToCustomerUseCase
         private AdLoader $ad_loader,
         private PublicAdFilter $public_ad_filter,
         private AdSorter $ad_sorter,
-        private AdTransformer $ad_transformer
+        private CustomerAdTransformer $ad_transformer
     )
     {
     }
@@ -21,7 +21,7 @@ class ShowPropertiesToCustomerUseCase
     public function execute() : array {
         $ads = $this->ad_loader->execute();
         $ads = $this->public_ad_filter->execute($ads);
-//        print_r($ads);
+
         $ads = $this->ad_sorter->execute($ads);
         return $this->ad_transformer->execute($ads);
     }

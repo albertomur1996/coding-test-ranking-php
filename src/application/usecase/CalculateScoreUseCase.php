@@ -17,7 +17,8 @@ class CalculateScoreUseCase
 
     public function execute() : void {
         $ads = $this->ad_loader->execute();
-        $ads = $this->score_calculator->execute($ads);
-        array_map("$this->ad_saver->execute", $ads);
+        $this->score_calculator->execute($ads);
+
+        foreach ($ads as $ad) $this->ad_saver->execute($ad);
     }
 }

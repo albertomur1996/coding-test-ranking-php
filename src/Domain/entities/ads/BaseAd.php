@@ -23,11 +23,27 @@ class BaseAd
     }
 
     /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return array
      */
     public function getPictures(): array
     {
         return $this->pictures;
+    }
+
+    /**
+     * @param array $pictures
+     */
+    public function setPictures(array $pictures): void
+    {
+        $this->pictures = $pictures;
     }
 
     /**
@@ -39,12 +55,30 @@ class BaseAd
     }
 
     /**
+     * @param String|null $description
+     */
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
      * @return int|null
      */
     public function getPropertySize(): ?int
     {
         return $this->property_size;
     }
+
+    /**
+     * @param int|null $property_size
+     */
+    public function setPropertySize(?int $property_size): void
+    {
+        $this->property_size = $property_size;
+    }
+
+
 
 
 }

@@ -7,7 +7,7 @@ use App\Domain\Picture;
 class PictureMother
 {
     public function execute() : array {
-        $times = rand(1, 5);
+        $times = rand(0, 4);
         $result = [];
 
         for ($i = 0; $i < $times; $i++) {

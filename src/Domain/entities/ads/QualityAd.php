@@ -29,12 +29,30 @@ class QualityAd extends BaseAd
     }
 
     /**
+     * @param int|null $score
+     */
+    public function setScore(?int $score): void
+    {
+        $this->score = $score;
+    }
+
+    /**
      * @return DateTimeImmutable|null
      */
     public function getIrrelevantSince(): ?DateTimeImmutable
     {
         return $this->irrelevantSince;
     }
+
+    /**
+     * @param DateTimeImmutable|null $irrelevantSince
+     */
+    public function setIrrelevantSince(?DateTimeImmutable $irrelevantSince): void
+    {
+        $this->irrelevantSince = $irrelevantSince;
+    }
+
+
 
     public function is_relevant() : bool {
         return $this->score != null && $this->score >= 40;

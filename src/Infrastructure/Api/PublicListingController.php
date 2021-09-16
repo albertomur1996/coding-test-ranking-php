@@ -18,6 +18,7 @@ final class PublicListingController
     public function __invoke(): JsonResponse
     {
         $ads = $this->show_properties_to_clients_use_case->execute();
+
         return new JsonResponse($ads);
     }
 }
