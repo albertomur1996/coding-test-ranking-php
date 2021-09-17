@@ -43,3 +43,32 @@ A continuación se enumeran los requisitos mínimos para ejecutar el proyecto:
 * El código debe ser ejecutable y no mostrar ninguna excepción.
 
 * Debes proporcionar 3 endpoints: Uno para calcular la puntuación de todos los anuncios, otro para listar los anuncios para un usuario de idealista y otro para listar los anuncios para el responsable del departamento de gestión de calidad.
+
+# Instrucciones/requisitos de entrega
+
+## Requisitos
+
+* Sistema Operativo: Windows, Linux o MacOS (recomendable Windows o MacOS por la facilidad de instalación de Docker)
+* Plataforma de ejecución: Docker. En caso de no tener Docker instalado, el instalador de Windows o MacOS se descarga desde aquí https://www.docker.com/products/docker-desktop. En caso de tener un Sistema Operativo Linux, la página https://docs.docker.com/engine/install/ indica qué hacer en función de la distribución Linux que se tenga
+* Navegador Web: Mozilla Firefox (https://www.mozilla.org/en-US/firefox/new/)
+* El puerto 8080 debe estar libre, de lo contrario el contenedor Docker no se podrá poner en marcha
+
+## Instrucciones
+
+1. Descargar el proyecto desde el enlace https://github.com/albertomur1996/coding-test-ranking-php
+2. Descomprimir el ZIP con cualquier programa de descompresión (si no se dispone de ninguno, usar https://www.7-zip.org/)
+3. Mediante la consola del Sistema Operativo que se esté usando, acceder a la carpeta `docker` que hay dentro del proyecto descomprimido en el paso anterior
+4. Dentro de la carpeta `docker` ejecutar el comando docker-compose up --build para construir la imagen de Docker y poner en marcha el contenedor
+5. Una vez ejecutados los pasos anteriores, los endpoints desarrollados son accesibles desde las siguientes URL:
+   1. `localhost:8080/list/customer` para ver el listado de anuncios destinado a los clientes
+   2. `localhost:8080/list/quality` para ver el listado de anuncios irrelevantes
+   3. `localhost:8080/score/calculate` para ejecutar el cálculo de las puntuaciones de los anuncios
+
+## Comentarios
+
+* Los subapartados del paso 5 se pueden ejecutar en el orden que se desee
+* Si se realizan cambios en el servicio de generación de anuncios, el fichero `ads.json` deberá ser borrado si se quieren ver dichos cambios
+* A lo largo de todo el proyecto se ha aplicado arquitectura hexagonal para mantener los diferentes métodos/clases lo mejor organizados posibles
+* Es muy probable que al leer el código se note que hay cosas que se podrían haber interpretado/hecho de otra manera, como por ejemplo el uso de getters/setters. Las decisiones tomadas han sido siempre pensando en lo que he estimado más adecuado al tipo de proyecto y su extensión
+* El proyecto ha sido probado en Ubuntu Mate, Windows 10 y MacOS Mojave para comprobar que el funcionamiento fuera correcto en los 3 tipos de Sistema Operativo
+* Cualquier duda o sugerencia será bien recibida, por ejemplo, a través de la creación de issues de GitHub
