@@ -6,8 +6,16 @@ namespace App\Domain;
 
 use JsonSerializable;
 
+/**
+ * Clase que representa a cualquiera de las fotos de un anuncio
+ */
 final class Picture implements JsonSerializable
 {
+    /**
+     * @param int $id
+     * @param String $url
+     * @param String $quality
+     */
     public function __construct(
         private int $id,
         private String $url,
@@ -15,6 +23,11 @@ final class Picture implements JsonSerializable
     ) {
     }
 
+    /**
+     * Comprueba si una foto es en alta definición o no
+     *
+     * @return bool
+     */
     public function is_hd() : bool {
         $result = true;
 
@@ -24,6 +37,12 @@ final class Picture implements JsonSerializable
         return $result;
     }
 
+    /**
+     * Permite guardar la información de una foto en formato JSON, útil a la hora de volcar
+     * la información de los anuncios en el fichero de texto
+     *
+     * @return array
+     */
     public function jsonSerialize(): array
     {
         return ["id" => $this->id, "url" => $this->url, "quality" => $this->quality];

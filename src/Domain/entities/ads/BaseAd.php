@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace App\Domain\entities;
 
+/**
+ * Representa al conjunto mínimo de atributos de cualquier anuncio
+ */
 class BaseAd
 {
+    /**
+     * @param int $id
+     * @param array $pictures
+     * @param String|null $description
+     * @param int|null $property_size
+     */
     public function __construct(
         private int $id,
         private array $pictures,
@@ -77,8 +86,4 @@ class BaseAd
     {
         $this->property_size = $property_size;
     }
-
-
-
-
 }

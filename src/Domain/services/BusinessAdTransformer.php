@@ -2,8 +2,21 @@
 
 namespace  App\Domain\services;
 
+/**
+ * Servicio de dominio encargado de transformar los objetos anuncio a una representación tipo array plano.
+ *
+ * Esta representación es necesaria para mostrar la información correctamente cuando el controlador la devuelve.
+ *
+ * Los atributos/propiedades devueltos son aquellos que resultan de interés para el encargado de calidad
+ */
 class BusinessAdTransformer
 {
+    /**
+     * Devuelve cada anuncio como si fuera un array plano en vez de una clase que extiende de QualityAd
+     *
+     * @param array $ads
+     * @return array
+     */
     public function execute(array $ads) : array {
         $result = [];
 
