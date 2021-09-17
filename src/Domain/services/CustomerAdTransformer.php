@@ -24,9 +24,7 @@ class CustomerAdTransformer
             $new_ad = [
                 "pictures" => $ad->getPictures(),
                 "description" => $ad->getDescription(),
-                "property_size" => $ad->getPropertySize(),
-                "score" => $ad->getScore(),
-                "irrelevant_since" => $ad->getIrrelevantSince()];
+                "property_size" => $ad->getPropertySize()];
 
             if (strcmp(get_class($ad), "App\Domain\\entities\QualityChalet") == 0) {
                 $new_ad["garden_size"] = $ad->getGardenSize();
