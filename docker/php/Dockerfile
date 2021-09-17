@@ -12,12 +12,12 @@ RUN apt-get update && apt-get install -y \
         pcntl \
         mbstring
 
-# RUN #pecl install xdebug \
-#    && docker-php-ext-enable xdebug
-
 RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN usermod -u 1000 www-data
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /var/www/
+#
+#RUN composer install
+#RUN composer update
