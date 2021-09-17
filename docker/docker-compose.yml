@@ -8,7 +8,7 @@ services:
       - ../:/var/www/
     networks:
       - base
-    command: symfony serve --port=8080
+    command: bash -c "composer install && symfony serve --port=8080"
 
 networks:
   base:
