@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\entities;
+namespace App\Domain\entities\ads;
 
 /**
  * La clase fue creada, en sustitución al atributo typology, debido a que no todos los tipos de propiedades

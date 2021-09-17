@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\entities;
+namespace App\Domain\entities\ads;
 
 /**
  * Añade atributos específicos para los anuncios de propiedades inmobiliarias tipo chalet (en este

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\entities;
+namespace App\Domain\entities\ads;
 
 /**
  * Representa al conjunto mínimo de atributos de cualquier anuncio
