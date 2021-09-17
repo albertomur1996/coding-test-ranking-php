@@ -41,11 +41,12 @@ class FromJsonFileAdsLoader {
             if ($tmp_ad["score"] < 40 && $tmp_ad["irrelevant_since"]) {
                 $date = DateTimeImmutable::__set_state($tmp_ad["irrelevant_since"]);
             }
+            $description = mb_convert_encoding($tmp_ad["description"], 'UTF-8', 'UTF-8');
 
             $ads[$tmp_ad["id"]] = match ($tmp_ad["typology"]) {
-                "Chalet" => new QualityChalet($tmp_ad["id"], $this->pictures_reader->execute($tmp_ad["pictures"]), $tmp_ad["description"], $tmp_ad["property_size"], $tmp_ad["score"], $date, $tmp_ad["garden_size"]),
-                "Flat" => new QualityFlat($tmp_ad["id"], $this->pictures_reader->execute($tmp_ad["pictures"]), $tmp_ad["description"], $tmp_ad["property_size"], $tmp_ad["score"], $date),
-                "Garage" => new QualityGarage($tmp_ad["id"], $this->pictures_reader->execute($tmp_ad["pictures"]), $tmp_ad["description"], $tmp_ad["property_size"], $tmp_ad["score"], $date),
+                "Chalet" => new QualityChalet($tmp_ad["id"], $this->pictures_reader->execute($tmp_ad["pictures"]), $description, $tmp_ad["property_size"], $tmp_ad["score"], $date, $tmp_ad["garden_size"]),
+                "Flat" => new QualityFlat($tmp_ad["id"], $this->pictures_reader->execute($tmp_ad["pictures"]), $description, $tmp_ad["property_size"], $tmp_ad["score"], $date),
+                "Garage" => new QualityGarage($tmp_ad["id"], $this->pictures_reader->execute($tmp_ad["pictures"]), $description, $tmp_ad["property_size"], $tmp_ad["score"], $date),
             };
         }
 

@@ -32,6 +32,9 @@ final class PublicListingController
     {
         $ads = $this->show_properties_to_clients_use_case->execute();
 
-        return new JsonResponse($ads);
+        $response = new JsonResponse($ads);
+        $response->setEncodingOptions( $response->getEncodingOptions() | JSON_PRETTY_PRINT );
+
+        return $response;
     }
 }

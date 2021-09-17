@@ -32,6 +32,9 @@ final class CalculateScoreController
     {
         $this->calculate_score_use_case->execute();
 
-        return new JsonResponse(["status" => "The score has been updated for all the ads."]);
+        $response = new JsonResponse(["status" => "The score has been updated for all the ads."]);
+        $response->setEncodingOptions( $response->getEncodingOptions() | JSON_PRETTY_PRINT );
+
+        return $response;
     }
 }
