@@ -67,7 +67,7 @@ A continuación se enumeran los requisitos mínimos para ejecutar el proyecto:
 ## Comentarios
 
 * Los subapartados del paso 5 se pueden ejecutar en el orden que se desee
-* Si se realizan cambios en el servicio de generación de anuncios, el fichero `public/ads.json` (el directorio `public` se encuentra en la raíz del proyecto) deberá ser borrado si se quieren ver dichos cambios
+* Si se realizan cambios en el servicio de generación de anuncios, el fichero `public/ads.json` (el directorio `public` se encuentra en la raíz del proyecto) deberá ser borrado (en el caso de que exista) si se quieren ver dichos cambios
 * A lo largo de todo el proyecto se ha aplicado arquitectura hexagonal para mantener los diferentes métodos/clases lo mejor organizados posibles
 * Es muy probable que al leer el código se note que hay cosas que se podrían haber interpretado/hecho de otra manera, como por ejemplo el uso de getters/setters. Las decisiones tomadas han sido siempre pensando en lo que he estimado más adecuado al tipo de proyecto y su extensión
 * El proyecto ha sido probado en Ubuntu Mate, Windows 10 y MacOS Mojave para comprobar que el funcionamiento fuera correcto en los 3 tipos de Sistema Operativo
