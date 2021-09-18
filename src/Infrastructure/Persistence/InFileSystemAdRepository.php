@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence;
 
-use App\Domain\entities\QualityAd;
+use App\Domain\entities\ads\QualityAd;
 use App\Infrastructure\Services\ToJsonFileAdsSaver;
 use App\Infrastructure\Services\FromJsonFileAdsLoader;
 use App\Infrastructure\Services\AdsGenerator;

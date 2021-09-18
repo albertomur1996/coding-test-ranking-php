@@ -26,11 +26,12 @@ class CustomerAdTransformer
                 "description" => $ad->getDescription(),
                 "property_size" => $ad->getPropertySize()];
 
-            if (strcmp(get_class($ad), "App\Domain\\entities\QualityChalet") == 0) {
+            if (strcmp(get_class($ad), "App\Domain\\entities\ads\QualityChalet") == 0) {
                 $new_ad["garden_size"] = $ad->getGardenSize();
-            } else if (strcmp(get_class($ad), "App\Domain\\entities\QualityFlat") == 0) {
+                $new_ad["typology"] = "Chalet";
+            } else if (strcmp(get_class($ad), "App\Domain\\entities\ads\QualityFlat") == 0) {
                 $new_ad["typology"] = "Flat";
-            } else if (strcmp(get_class($ad), "App\Domain\\entities\QualityGarage") == 0) {
+            } else if (strcmp(get_class($ad), "App\Domain\\entities\ads\QualityGarage") == 0) {
                 $new_ad["typology"] = "Garage";
             }
 

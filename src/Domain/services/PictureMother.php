@@ -2,7 +2,7 @@
 
 namespace  App\Domain\services;
 
-use App\Domain\Picture;
+use App\Domain\entities\Picture;
 
 /**
  * Servicio de dominio encargado de generar una imagen aleatoria.

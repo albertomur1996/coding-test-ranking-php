@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Services;
 
-use App\Domain\Picture;
+use App\Domain\entities\Picture;
 
 /**
  * Sirve para convertir la información de las fotografías cuando se lee la información del fichero JSON.

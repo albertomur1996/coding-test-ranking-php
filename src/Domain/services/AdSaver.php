@@ -3,7 +3,7 @@
 namespace  App\Domain\services;
 
 use AdRepository;
-use App\Domain\entities\QualityAd;
+use App\Domain\entities\ads\QualityAd;
 
 /**
  * Servicio de dominio encargado de guardar un anuncio en el repositorio

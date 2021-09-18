@@ -1,6 +1,6 @@
 <?php
 
-use App\Domain\entities\QualityAd;
+use App\Domain\entities\ads\QualityAd;
 
 /**
  *  Representa las operaciones que cualquier repositorio de anuncios, sin importar el tipo, debe tener

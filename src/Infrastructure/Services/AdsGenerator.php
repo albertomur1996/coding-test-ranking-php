@@ -2,9 +2,9 @@
 
 namespace App\Infrastructure\Services;
 
-use App\Domain\entities\QualityChalet;
-use App\Domain\entities\QualityFlat;
-use App\Domain\entities\QualityGarage;
+use App\Domain\entities\ads\QualityChalet;
+use App\Domain\entities\ads\QualityFlat;
+use App\Domain\entities\ads\QualityGarage;
 use App\Domain\services\PictureMother;
 
 /**
